@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluetooth Test</title>
+
+    <script>
+
+        let bluetoothSearchResult = [
+            { deviceName: "blueTooth1", mac: 111111 },
+            { deviceName: "blueTooth2", mac: 222222 },
+            { deviceName: "blueTooth3", mac: 333333 },
+        ]
+        function clickSearch() {
+            let table = document.getElementById("BluetoothDevices");
+            for (let bluetooth of bluetoothSearchResult) {
+                let row = table.insertRow(1);
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                let cell3 = row.insertCell(2);
+                cell1.innerHTML = bluetooth["deviceName"];
+                cell2.innerHTML = bluetooth["mac"];
+                cell3.innerHTML = "<a onclick='updateConnectResult()' href='#'>connect</a>"
+            }
+            let searchDeviceResult = document.getElementById("searchDeviceResult");
+            searchDeviceResult.innerHTML = "Pass"
+        }
+        function updateConnectResult(){
+            let connectDeviceResult = document.getElementById("connectDeviceResult");
+            connectDeviceResult.innerHTML = "Pass"
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Bluetooth Test</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>item</th>
+                <th>result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Is Bluetooth Support</td>
+                <td>Pass</td>
+            </tr>
+            <tr>
+                <td>Is Bluetooth Enable</td>
+                <td>Pass</td>
+            </tr>
+            <tr>
+                <td>Search Device</td>
+                <td id="searchDeviceResult">Waiting</td>
+            </tr>
+            <tr>
+                <td>Connect Device</td>
+                <td id="connectDeviceResult">Waiting</td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <button onclick="clickSearch()">
+        Search Bluetooth
+    </button>
+    <table id="BluetoothDevices">
+        <tr>
+            <th>deviceName</th>
+            <th>mac</th>
+            <th>action</th>
+        </tr>
+    </table>
+</body>
+
+</html>

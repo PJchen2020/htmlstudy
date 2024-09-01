@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        let wifiSearchResult = [
+            { SSID: "wifi1", BSSID: 111111 },
+            { SSID: "wifi2", BSSID: 222222 },
+            { SSID: "wifi3", BSSID: 333333 },
+        ]
+        function clickSearch() {
+            let table = document.getElementById("WifiDevices");
+            for (let wifi of wifiSearchResult) {
+                let row = table.insertRow(1);
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                let cell3 = row.insertCell(2);
+                cell1.innerHTML = wifi["SSID"];
+                cell2.innerHTML = wifi["BSSID"];
+                cell3.innerHTML = "<a onclick='updateConnectResult()' href='#'>connect</a>"
+            }
+            let searchDeviceResult = document.getElementById("searchDeviceResult");
+            searchDeviceResult.innerHTML = "Pass"
+        }
+        function updateConnectResult(){
+            let connectDeviceResult = document.getElementById("connectDeviceResult");
+            connectDeviceResult.innerHTML = "Pass"
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Wifi Test</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>item</th>
+                <th>result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Is Wifi Support</td>
+                <td>Pass</td>
+            </tr>
+            <tr>
+                <td>Is Wifi Enable</td>
+                <td>Pass</td>
+            </tr>
+            <tr>
+                <td>Search Device</td>
+                <td id="searchDeviceResult">Waiting</td>
+            </tr>
+            <tr>
+                <td>Connect Device</td>
+                <td id="connectDeviceResult">Waiting</td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <button onclick="clickSearch()">
+        Search Wifi
+    </button>
+    <table id="WifiDevices">
+        <tr>
+            <th>SSID</th>
+            <th>BSSID</th>
+            <th>action</th>
+        </tr>
+    </table>
+</body>
+
+</html>
